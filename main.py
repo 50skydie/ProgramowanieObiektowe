@@ -13,8 +13,8 @@ class Game:
         self._size = self.weight, self.height = 1280, 720
         self._background_image = None
         self._enemies = [Bird(), Crow()]
+        self._enemy_id = (randrange(0,100) % 2)
         self._player = Player()
-        self._enemy_id = 0
  
     def on_init(self): #init things, works only once at start
         pygame.init()
