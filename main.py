@@ -21,7 +21,7 @@ class Game:
         pygame.display.set_caption("ProgramowanieObiektowe")
         self._display_surf = pygame.display.set_mode(self._size) 
         self._running = True
-        self._background_image = pygame.image.load("spritesheets/tmp_bg.jpg").convert()
+        self._background_image = pygame.transform.scale(pygame.image.load("spritesheets/background.png").convert(), (1280, 720))
  
     def on_event(self, event): #events here
         if event.type == pygame.QUIT:

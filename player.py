@@ -30,7 +30,7 @@ class Player:
             self.pos.y = 620    
         
     def draw(self,screen):
-        screen.blit(pygame.transform.scale(pygame.image.load("spritesheets/enemy1.png"), (200, 100)), self.pos) 
+        screen.blit(pygame.transform.scale(pygame.image.load("spritesheets/Player.png"), (200, 100)), self.pos) 
 
     def collision(self,enemy):
         if (enemy._y_pos-100)<self.pos.y<(enemy._y_pos+100):

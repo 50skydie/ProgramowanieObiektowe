@@ -39,7 +39,7 @@ class Bird(Enemy):
         self._speed = 0.5
         self._y_speed = 0.5
         self._points = 50
-        self._enemy_image = pygame.image.load("spritesheets/enemy1.png")
+        self._enemy_image = pygame.image.load("spritesheets/Bird.png")
     
     #overdrive method
     def enemyMovment(self):
@@ -56,4 +56,4 @@ class Crow(Enemy):
     def __init__(self):
         super().__init__()
         #need to change to other img
-        self._enemy_image = pygame.image.load("spritesheets/enemy1.png")
+        self._enemy_image = pygame.image.load("spritesheets/Crow.png")
