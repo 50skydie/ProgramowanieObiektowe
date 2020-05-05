@@ -61,7 +61,7 @@ while True:
     pygame.display.set_caption("Programowanie Objektowe")
     font = pygame.font.SysFont("comicsansms", 72)
     text = font.render("Start",True,(0,128,0))
-    tapeta = pygame.image.load("tło.jpg").convert()
+    tapeta = pygame.image.load("Spritesheets/background.png").convert()
     screen.blit(tapeta,(0,0))
     x,y = pygame.mouse.get_pos()
     ellipse = pygame.draw.ellipse(screen,22,(500,300,300,150))
