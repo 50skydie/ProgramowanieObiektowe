@@ -28,9 +28,8 @@ class Player:
     def draw(self,screen):
         screen.blit(pygame.transform.scale(pygame.image.load("spritesheets/enemy1.png"), (200, 100)), self.pos) 
 
-    def collision(self):
-        self.enemy = Enemy()
-        if (self.enemy._y_pos-40)<self.pos.y<(self.enemy._y_pos+40):
-            if (self.enemy._x_pos-40)<self.pos.x<(self.enemy._x_pos+40):
+    def collision(self, enemy):
+        if (enemy._y_pos-40)<self.pos.y<(enemy._y_pos+40):
+            if (enemy._x_pos-40)<self.pos.x<(enemy._x_pos+40):
                 print("wykryto kolizje")
             

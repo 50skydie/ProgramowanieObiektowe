@@ -32,7 +32,7 @@ class Game:
         if(self._enemies[self._enemy_id].isOutOfBoundry()): #reseting enemies with random class 0 = bird 1 = crow after crossing boundary,
             self._enemy_id = (randrange(0,100) % 2)
             self._enemies[self._enemy_id].resetPosition()
-        self._player.collision()
+        self._player.collision(self._enemies[self._enemy_id])
         self._player.tick()
 
     def on_render(self): #render thigns here
