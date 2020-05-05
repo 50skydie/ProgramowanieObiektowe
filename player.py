@@ -1,15 +1,13 @@
 import pygame,sys
 from pygame.math import Vector2
 from enemy import Enemy
-class Player(object):
+class Player:
 
-    def __init__(self, Game):
-        self.Game=Game
-        size = self.Game.screen.get_size()
-        self.pos = Vector2(size[0]/3,size[1]/3)
+    def __init__(self):
+        self.pos = Vector2(50,50)
         self.vel = Vector2(0,0)
         self.acc = Vector2(0,0)
-        self.screen = self.Game.screen
+        
         
    
     def force(self,Force):
@@ -30,16 +28,15 @@ class Player(object):
         self.acc *=0
         
 
-    def draw(self):
-        rect = pygame.Rect(self.pos.x,self.pos.y,50,50)
-        pygame.draw.rect(self.Game.screen,(0,150,255),rect)
+    def draw(self,screen):
+        screen.blit(pygame.transform.scale(pygame.image.load("spritesheets/enemy1.png"), (200, 100)), self.pos) 
 
 
     def collision(self):
-        self.enemy = Enemy(self)
-        if (self.enemy.pos.y-40)<self.pos.y<(self.enemy.pos.y+40):
-            if (self.enemy.pos.x-40)<self.pos.x<(self.enemy.pos.x+40):
-                exit(0)
+        self.enemy = Enemy()
+        if (self.enemy._y_pos-40)<self.pos.y<(self.enemy._y_pos+40):
+            if (self.enemy._x_pos-40)<self.pos.x<(self.enemy._x_pos+40):
+                print("wykryto kolizje")
             
         
         
