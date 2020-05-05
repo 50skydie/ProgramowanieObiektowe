@@ -28,6 +28,9 @@ class Enemy:
         if(self._x_pos < -500):
             return True
 
+    def returnPoints(self):
+        return self._points
+
 #inheritance example
 class Bird(Enemy):
     def __init__(self):
