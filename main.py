@@ -3,6 +3,7 @@ import sys
 from pygame.locals import *
 from enemy import *
 from random import *
+from player import Player
 
 #there are too much comments, but they can be helpful
 class Game:
@@ -12,6 +13,7 @@ class Game:
         self._size = self.weight, self.height = 1280, 720
         self._background_image = None
         self._enemies = [Bird(), Crow()]
+        self._player = Player()
         self._enemy_id = 0
  
     def on_init(self): #init things, works only once at start
@@ -31,9 +33,12 @@ class Game:
             self._enemy_id = (randrange(0,100) % 2)
             self._enemies[self._enemy_id].resetPosition()
             print(self._enemy_id) # debug only
+        self._player.collision()
+        self._player.tick()
 
     def on_render(self): #render thigns here
         self._display_surf.blit(self._background_image, [0,0])
+        self._player.draw(self._display_surf)
         self._enemies[self._enemy_id].renderEnemy(self._display_surf) 
         pygame.display.flip()
 
