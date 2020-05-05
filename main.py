@@ -32,7 +32,6 @@ class Game:
         if(self._enemies[self._enemy_id].isOutOfBoundry()): #reseting enemies with random class 0 = bird 1 = crow after crossing boundary,
             self._enemy_id = (randrange(0,100) % 2)
             self._enemies[self._enemy_id].resetPosition()
-            print(self._enemy_id) # debug only
         self._player.collision()
         self._player.tick()
 
@@ -48,7 +47,6 @@ class Game:
     def on_execute(self): 
         if self.on_init() == False:
             self._running = False
-
         while( self._running ):
             for event in pygame.event.get():
                 self.on_event(event)

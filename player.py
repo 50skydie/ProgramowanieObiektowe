@@ -8,8 +8,6 @@ class Player:
         self.vel = Vector2(0,0)
         self.acc = Vector2(0,0)
         
-        
-   
     def force(self,Force):
         self.acc += Force
 
@@ -27,10 +25,8 @@ class Player:
         self.pos += self.vel
         self.acc *=0
         
-
     def draw(self,screen):
         screen.blit(pygame.transform.scale(pygame.image.load("spritesheets/enemy1.png"), (200, 100)), self.pos) 
-
 
     def collision(self):
         self.enemy = Enemy()
@@ -38,5 +34,3 @@ class Player:
             if (self.enemy._x_pos-40)<self.pos.x<(self.enemy._x_pos+40):
                 print("wykryto kolizje")
             
-        
-        
