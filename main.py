@@ -55,30 +55,27 @@ class Game:
         self.on_cleanup()
  
  #maybe some req here
-while True:
-    pygame.init()
-    screen = pygame.display.set_mode((1280, 720))
-    pygame.display.set_caption("Programowanie Objektowe")
-    font = pygame.font.SysFont("comicsansms", 72)
-    text = font.render("Start",True,(0,128,0))
-    tapeta = pygame.image.load("tło.jpg").convert()
-    screen.blit(tapeta,(0,0))
-    x,y = pygame.mouse.get_pos()
-    ellipse = pygame.draw.ellipse(screen,22,(500,300,300,150))
-    surface2 = pygame.transform.rotate(screen, 360)
-    screen.blit(screen,(0,0))
-    screen.blit(text,(550,320))
-    pygame.display.flip()
-    if ellipse.collidepoint((x,y)):
-        if click:
-            theGame = Game()
-            theGame.on_execute()
-    click = False
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit(0)
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1:
-                click = True
-
+if __name__ == "__main__":
+    while True: 
+        pygame.init()
+        screen = pygame.display.set_mode((1280, 720))
+        pygame.display.set_caption("Programowanie Objektowe")
+        font = pygame.font.SysFont("comicsansms", 72)
+        text = font.render("Start",True,(0,128,0))
+        tapeta = pygame.transform.scale(pygame.image.load("spritesheets/background.png").convert(), (1280, 720))
+        screen.blit(tapeta,(0,0))
+        x,y = pygame.mouse.get_pos()
+        ellipse = pygame.draw.ellipse(screen,22,(500,300,300,150))
+        surface2 = pygame.transform.rotate(screen, 360)
+        screen.blit(screen,(0,0))
+        screen.blit(text,(550,320))
+        pygame.display.flip()
+        if ellipse.collidepoint((x,y)):
+            if click:
+                theGame = Game()
+                theGame.on_execute()
+        click = False
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
