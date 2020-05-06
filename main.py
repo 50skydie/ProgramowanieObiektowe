@@ -4,6 +4,7 @@ from pygame.locals import *
 from enemy import *
 from random import *
 from player import Player
+from score_system import *
 
 #there are too much comments, but they can be helpful
 class Game:
@@ -15,13 +16,14 @@ class Game:
         self._enemies = [Bird(), Crow()]
         self._enemy_id = (randrange(0,100) % 2)
         self._player = Player()
+        self._laderboard = Score_system()
  
     def on_init(self): #init things, works only once at start
-        pygame.init()
         pygame.display.set_caption("ProgramowanieObiektowe")
         self._display_surf = pygame.display.set_mode(self._size) 
         self._running = True
         self._background_image = pygame.transform.scale(pygame.image.load("spritesheets/background.png").convert(), (1280, 720))
+        self._laderboard.load_hiscore()
  
     def on_event(self, event): #events here
         if event.type == pygame.QUIT:
@@ -32,6 +34,7 @@ class Game:
         if(self._enemies[self._enemy_id].isOutOfBoundry()): #reseting enemies with random class 0 = bird 1 = crow after crossing boundary,
             self._enemy_id = (randrange(0,100) % 2)
             self._enemies[self._enemy_id].resetPosition()
+            self._laderboard.score_update(self._enemies[self._enemy_id].returnPoints())
         self._player.collision(self._enemies[self._enemy_id])
         self._player.tick()
 
@@ -42,6 +45,8 @@ class Game:
         pygame.display.flip()
 
     def on_cleanup(self): #just cleaning modules
+        self._laderboard.set_hiscore()
+        self._laderboard.save_hiscore()
         pygame.quit()
  
     def on_execute(self): 
