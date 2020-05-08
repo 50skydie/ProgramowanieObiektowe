@@ -13,9 +13,9 @@ class Player:
 
     def tick(self):
         #input
-        pressed = pygame.key.get_pressed()  ###start
+        pressed = pygame.key.get_pressed()
         if pressed[pygame.K_w]:
-            self.force(Vector2(0,-1))   ###end
+            self.force(Vector2(0,-1))
         #opor
         self.vel *= 0.9
         #grawitacja
