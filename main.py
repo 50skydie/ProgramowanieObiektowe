@@ -13,6 +13,7 @@ from random import *
 from player import *
 from score_system import *
 from menu import *
+from ui import *
 
 class Game:
     def __init__(self):
@@ -32,6 +33,7 @@ class Game:
         self._running = True
         self._background_image = pygame.transform.scale(pygame.image.load("spritesheets/background.png").convert(), (1280, 720))
         self._laderboard.load_hiscore()
+        self._ui = Ui(self._display_surf)
 
     def on_event(self, event):
         if event.type == pygame.QUIT:
@@ -62,6 +64,8 @@ class Game:
         else:
             self._player.draw(self._display_surf)
             self._enemies[self._enemy_id].renderEnemy(self._display_surf) 
+        self._ui.render(self._laderboard._score, self._laderboard._hiscore)
+        self._laderboard.debug()
         pygame.display.flip()
 
     def on_reset(self): #laderboard here
@@ -70,8 +74,12 @@ class Game:
         self._enemies[self._enemy_id].resetPosition()
         self._laderboard.set_hiscore()
         self._laderboard.save_hiscore()
+        self._laderboard.score_reset()
 
     def on_cleanup(self):
+        self._laderboard.set_hiscore()
+        self._laderboard.save_hiscore()
+        self._laderboard.score_reset()
         pygame.quit()
  
     def on_execute(self): 

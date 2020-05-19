@@ -22,3 +22,6 @@ class Score_system:
     
     def score_reset(self):
         self._score = 0
+        
+    def debug(self):
+        print(f"hi {self._hiscore} ; score {self._score}")
