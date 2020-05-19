@@ -39,11 +39,6 @@ class Game:
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.on_reset()
 
-    def on_reset(self):
-        self._menu.click()
-        self._player.click()
-        self._enemies[self._enemy_id].resetPosition()
-
     def on_loop(self):
         if(self._menu.ismenuon):
             pass
@@ -65,6 +60,11 @@ class Game:
             self._player.draw(self._display_surf)
             self._enemies[self._enemy_id].renderEnemy(self._display_surf) 
         pygame.display.flip()
+
+    def on_reset(self): #laderboard here
+        self._menu.click()
+        self._player.click()
+        self._enemies[self._enemy_id].resetPosition()
 
     def on_cleanup(self):
         self._laderboard.set_hiscore()
