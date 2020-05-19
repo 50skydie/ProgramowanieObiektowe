@@ -12,16 +12,13 @@ class Player:
     def force(self,Force):
         self.acc += Force
 
+    def addforce(self):
+        self.force(Vector2(0,-10))
+
     def tick(self):
-        #input
-        pressed = pygame.key.get_pressed()
-        if pressed[pygame.K_w]:
-            self.force(Vector2(0,-1))
-        #opor
-        self.vel *= 0.9
-        #grawitacja
-        self.vel += Vector2(0,0.5)
+        self.vel += Vector2(0,0.1)
         #skok
+        self.vel *= 0.8
         self.vel += self.acc
         self.pos += self.vel
         self.acc *=0

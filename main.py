@@ -38,6 +38,9 @@ class Game:
             self._running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.on_reset()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_w:
+                self._player.addforce()
 
     def on_loop(self):
         if(self._menu.ismenuon):
