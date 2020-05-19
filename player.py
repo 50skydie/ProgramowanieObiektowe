@@ -43,3 +43,6 @@ class Player:
 
     def isDead(self):
         return self.isdead
+
+    def click(self):
+        self.isdead = False

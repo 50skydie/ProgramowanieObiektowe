@@ -32,12 +32,17 @@ class Game:
         self._running = True
         self._background_image = pygame.transform.scale(pygame.image.load("spritesheets/background.png").convert(), (1280, 720))
         self._laderboard.load_hiscore()
- 
+
     def on_event(self, event):
         if event.type == pygame.QUIT:
             self._running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
-            self._menu.click()
+            self.on_reset()
+
+    def on_reset(self):
+        self._menu.click()
+        self._player.click()
+        self._enemies[self._enemy_id].resetPosition()
 
     def on_loop(self):
         if(self._menu.ismenuon):
