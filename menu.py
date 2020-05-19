@@ -12,7 +12,7 @@ class Menu():
     def render(self):
         surface2 = pygame.transform.rotate(self.screen, 360)
         self.screen.blit(self.screen,(0,0))
-        self.screen.blit(self.text,(550,320))
+        self.screen.blit(self.surface, (500, 300))
         self.screen.blit(self.text,(550,320))
 
     def onloop(self, isplayerdead):
