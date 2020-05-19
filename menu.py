@@ -7,11 +7,12 @@ class Menu():
         self.font = pygame.font.SysFont("comicsansms", 72)
         self.text = self.font.render("Start",True,(0,128,0))
         self.ismenuon = True
-        self.ellipse = pygame.draw.ellipse(self.screen,22,(500,300,300,150))
+        self.surface = pygame.Surface((290, 150))
 
     def render(self):
         surface2 = pygame.transform.rotate(self.screen, 360)
         self.screen.blit(self.screen,(0,0))
+        self.screen.blit(self.text,(550,320))
         self.screen.blit(self.text,(550,320))
 
     def onloop(self, isplayerdead):
