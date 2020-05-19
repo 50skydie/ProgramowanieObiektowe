@@ -53,14 +53,10 @@ class Game:
         self._enemies[self._enemy_id].renderEnemy(self._display_surf) 
         pygame.display.flip()
 
-<<<<<<< HEAD
     def on_reset(self):
         self._menu.click()
         self._player.click()
         self._enemies[self._enemy_id].resetPosition()
-=======
-    def on_cleanup(self):
->>>>>>> d346e649c4cfca9aba892a13bc4750816afe6659
         self._laderboard.set_hiscore()
         self._laderboard.save_hiscore()
 
