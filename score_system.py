@@ -22,3 +22,9 @@ class Score_system:
     
     def score_reset(self):
         self._score = 0
+
+    def return_score(self):
+        return self._score
+
+    def return_hiscore(self):
+        return self._hiscore
