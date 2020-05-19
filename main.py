@@ -65,10 +65,10 @@ class Game:
         self._menu.click()
         self._player.click()
         self._enemies[self._enemy_id].resetPosition()
-
-    def on_cleanup(self):
         self._laderboard.set_hiscore()
         self._laderboard.save_hiscore()
+
+    def on_cleanup(self):
         pygame.quit()
  
     def on_execute(self): 
