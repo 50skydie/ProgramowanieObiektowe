@@ -37,12 +37,11 @@ class Game:
         if event.type == pygame.QUIT:
             self._running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
-            #if event.button == 1:
             self._menu.click()
 
     def on_loop(self):
         if(self._menu.ismenuon):
-            self._menu.onloop(self._player.isdead)
+            pass
         else:
             self._enemies[self._enemy_id].enemyMovment()
             if(self._enemies[self._enemy_id].isOutOfBoundry()):
@@ -51,6 +50,7 @@ class Game:
                 self._laderboard.score_update(self._enemies[self._enemy_id].returnPoints())
             self._player.collision(self._enemies[self._enemy_id])
             self._player.tick()
+            self._menu.onloop(self._player.isdead)
 
     def on_render(self):
         self._display_surf.blit(self._background_image, [0,0])
