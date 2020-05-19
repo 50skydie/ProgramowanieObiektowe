@@ -7,21 +7,22 @@ class Player:
         self.pos = Vector2(50,50)
         self.vel = Vector2(0,0)
         self.acc = Vector2(0,0)
-        self.isdead = False
         
     def force(self,Force):
         self.acc += Force
+        
+    def addforce(self):
+        self.force(Vector2(0,-20))
+        #self.vel *= 0.99
+        #grawitacja
+        
+        
+        
 
     def tick(self):
-        #input
-        pressed = pygame.key.get_pressed()
-        if pressed[pygame.K_w]:
-            self.force(Vector2(0,-1))
-        #opor
-        self.vel *= 0.9
-        #grawitacja
-        self.vel += Vector2(0,0.5)
+        self.vel += Vector2(0,0.1)
         #skok
+        self.vel *= 0.8
         self.vel += self.acc
         self.pos += self.vel
         self.acc *=0
@@ -31,18 +32,10 @@ class Player:
             self.pos.y = 620    
         
     def draw(self,screen):
-        if(self.isdead):
-            screen.blit(pygame.transform.scale(pygame.image.load("spritesheets/BLANK.png"), (0, 0)), self.pos)
-        else:
-            screen.blit(pygame.transform.scale(pygame.image.load("spritesheets/Player.png"), (200, 100)), self.pos) 
+        screen.blit(pygame.transform.scale(pygame.image.load("spritesheets/Player.png"), (200, 100)), self.pos) 
 
     def collision(self,enemy):
         if (enemy._y_pos-100)<self.pos.y<(enemy._y_pos+100):
             if (enemy._x_pos-100)<self.pos.x<(enemy._x_pos+100):
-                self.isdead = True
-
-    def isDead(self):
-        return self.isdead
-
-    def click(self):
-        self.isdead = False
+                print("wykryto kolizje")
+  
